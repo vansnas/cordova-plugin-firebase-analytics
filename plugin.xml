@@ -11,7 +11,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <issue>https://github.com/chemerisuk/cordova-plugin-firebase-analytics/issues</issue>
 
     <js-module src="www/FirebaseAnalytics.js" name="FirebaseAnalytics">
-        <merges target="cordova.plugins.firebase.analytics" />
+        <clobbers target="cordova.plugins.firebase.analytics" />
     </js-module>
 
     <engines>
