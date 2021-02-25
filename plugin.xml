@@ -15,9 +15,9 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     </js-module>
 
     <engines>
-        <engine name="cordova" version=">=9.0.0"/>
-        <engine name="cordova-android" version=">=9.0.0"/>
-        <engine name="cordova-ios" version=">=6.1.1"/>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=8.1.0"/>
+        <engine name="cordova-ios" version=">=5.1.1"/>
     </engines>
 
     <preference name="ANALYTICS_COLLECTION_ENABLED" default="true" />
