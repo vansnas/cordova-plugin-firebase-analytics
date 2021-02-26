@@ -8,5 +8,8 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-02-26
+- Fix: Fixed MABS builds for both versions of MABS and Sample App connecting to Firebase Project. (https://outsystemsrd.atlassian.net/browse/RMET-539)
+
 ## 2021-02-25
 - Fix: Removed unnecessary dependency and add gradle configuration file. (https://outsystemsrd.atlassian.net/browse/RMET-539)
