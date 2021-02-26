@@ -60,7 +60,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </podspec>
         -->
 
-        <framework src="Firebase/Analytics" type="podspec" spec="$IOS_FIREBASE_ANALYTICS_VERSION"/>
+        <framework src="Firebase/Analytics" type="podspec" spec="~> 7.0.0"/>
 
     </platform>
 
