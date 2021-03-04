@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-03-04
+- Fix: Changed the way we include Google Services for Android. (https://outsystemsrd.atlassian.net/browse/RMET-539)
+
 ## 2021-02-26
 - Fix: Fixed MABS builds for both versions of MABS and Sample App connecting to Firebase Project. (https://outsystemsrd.atlassian.net/browse/RMET-539)
 
