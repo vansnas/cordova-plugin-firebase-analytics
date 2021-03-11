@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-03-11
+- Fix: Fixed the configurations hook (unzipAndCopyConfigurations). (https://outsystemsrd.atlassian.net/browse/RMET-547)
+
 ## 2021-03-04
 - Fix: Changed the way we include Google Services for Android. (https://outsystemsrd.atlassian.net/browse/RMET-539)
 
