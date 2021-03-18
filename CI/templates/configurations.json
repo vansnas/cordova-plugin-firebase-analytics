@@ -1,0 +1,36 @@
+{
+    "moduleName": "FirebaseAnalyticsPlugin",
+    "applicationNames": [
+        "FirebaseAnalyticsPlugin",
+        "FirebaseSampleApp"
+    ],
+    "testPipelineArgs": {
+        "plugin": "firebase-analytics",
+        "threads": "2"
+    },
+    "sauceLabsInfo": {
+        "FirebaseSampleApp": {
+            "androidAPIKey": "99E7D793424F45ECA9CF7125616DF46B",
+            "iosAPIKey": "FFCB2BDC770D4572B89B2DE7C99F3498"
+        }
+    }
+}
+
+
+{
+    "moduleName": "FirebasePerformancePlugin",
+    "applicationNames": [
+        "FirebasePerformancePlugin",
+        "FirebaseSampleApp"
+    ],
+    "testPipelineArgs": {
+        "plugin": "firebase-performance",
+        "threads": "2"
+    },
+    "sauceLabsInfo": {
+        "FirebaseSampleApp": {
+            "androidAPIKey": "99E7D793424F45ECA9CF7125616DF46B",
+            "iosAPIKey": "FFCB2BDC770D4572B89B2DE7C99F3498"
+        }
+    }
+}
