@@ -8,6 +8,8 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-03-18
+- feature: added pipelines configuration (https://outsystemsrd.atlassian.net/browse/RMET-437
 ## 2021-03-11
 - Fix: Fixed the configurations hook (unzipAndCopyConfigurations). (https://outsystemsrd.atlassian.net/browse/RMET-547)
 
