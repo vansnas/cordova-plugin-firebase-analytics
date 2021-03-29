@@ -97,8 +97,8 @@ module.exports = function(context) {
         console.log("PASSOU O COPY");
       }
     }
-    */
   }
+  */
       
   return defer.promise;
 }
