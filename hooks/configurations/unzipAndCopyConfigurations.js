@@ -78,6 +78,7 @@ module.exports = function(context) {
     utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
   }
 
+  /*
   if (cordovaAbove7) {
     console.log("ENTROU NO CORDOVA 7");
     var destPath = path.join(context.opts.projectRoot, "platforms", platform, "app");
@@ -87,7 +88,6 @@ module.exports = function(context) {
         utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
       }
     }
-    /*
     if (utils.checkIfFolderExists(completeFilePath)) {
       var destFilePath = path.join(completeFilePath, fileName);
       console.log("DEST FILE PATH 2: " + destFilePath);
