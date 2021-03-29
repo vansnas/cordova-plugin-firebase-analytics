@@ -5,8 +5,6 @@ var AdmZip = require("adm-zip");
 
 var utils = require("./utilities");
 
-var utilsApp = require("../utilities");
-
 var constants = {
   googleServices: "google-services"
 };
@@ -55,46 +53,17 @@ module.exports = function(context) {
   var sourceFilePath = path.join(targetPath, fileName);
   var destFilePath = path.join(context.opts.plugin.dir, fileName);
 
-  var androidPath =  "platforms/android/app";
-  var iOSPath = "platforms/ios/" + utilsApp.getAppName(context) + "/Resources";
-
-  var completeFilePath;
-
-  var isAndroid = platform.localeCompare("android");
-  var isIOS = platform.localeCompare("ios");
-
-  if(isAndroid == 0){ //android code
-    completeFilePath = path.join(context.opts.projectRoot, androidPath);
-    console.log("PASSOU ANDROID: " + completeFilePath)
-  }
-  else if(isIOS == 0){ //iOS code
-    completeFilePath = path.join(context.opts.projectRoot, iOSPath);
-    console.log("PASSOU iOS: " + completeFilePath)
-  }
-
   if(!utils.checkIfFolderExists(destFilePath)){
-    console.log("ENTROU NO IF 1");
-    console.log("DEST FILE PATH 1: " + destFilePath);
     utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
   }
 
-  /*
+  /* I believe this is not necessary, because the files are already copied to the correct folder in the line above, so comment
   if (cordovaAbove7) {
-    console.log("ENTROU NO CORDOVA 7");
     var destPath = path.join(context.opts.projectRoot, "platforms", platform, "app");
     if (utils.checkIfFolderExists(destPath)) {
       var destFilePath = path.join(destPath, fileName);
       if(!utils.checkIfFolderExists(destPath)){
         utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
-      }
-    }
-    if (utils.checkIfFolderExists(completeFilePath)) {
-      var destFilePath = path.join(completeFilePath, fileName);
-      console.log("DEST FILE PATH 2: " + destFilePath);
-      if(!utils.checkIfFolderExists(destFilePath)){
-        console.log("FILE NAO EXISTE, VAI COPIAR");
-        utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
-        console.log("PASSOU O COPY");
       }
     }
   }
