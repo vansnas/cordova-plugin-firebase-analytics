@@ -65,9 +65,11 @@ module.exports = function(context) {
 
   if(isAndroid == 0){ //android code
     completeFilePath = path.join(context.opts.projectRoot, androidPath);
+    console.log("PASSOU ANDROID: " + completeFilePath)
   }
   else if(isIOS == 0){ //iOS code
     completeFilePath = path.join(context.opts.projectRoot, iOSPath);
+    console.log("PASSOU iOS: " + completeFilePath)
   }
 
   if(!utils.checkIfFolderExists(destFilePath)){
