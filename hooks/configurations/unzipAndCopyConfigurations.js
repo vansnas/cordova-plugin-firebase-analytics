@@ -73,14 +73,20 @@ module.exports = function(context) {
   }
 
   if(!utils.checkIfFolderExists(destFilePath)){
+    console.log("ENTROU NO IF 1");
+    console.log("DEST FILE PATH 1: " + destFilePath);
     utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
   }
 
   if (cordovaAbove7) {
+    console.log("ENTROU NO CORDOVA 7");
     if (utils.checkIfFolderExists(completeFilePath)) {
       var destFilePath = path.join(completeFilePath, fileName);
+      console.log("DEST FILE PATH 2: " + destFilePath);
       if(!utils.checkIfFolderExists(destFilePath)){
+        console.log("FILE NAO EXISTE, VAI COPIAR");
         utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
+        console.log("PASSOU O COPY");
       }
     }
   }
