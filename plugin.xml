@@ -47,7 +47,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <string>$AUTOMATIC_SCREEN_REPORTING_ENABLED</string>
         </config-file>
 
-        <!--<resource-file src="GoogleService-Info.plist" target="./GoogleService-Info.plist" />-->
+        <resource-file src="GoogleService-Info.plist" target="./GoogleService-Info.plist" />
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />

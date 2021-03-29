@@ -80,6 +80,14 @@ module.exports = function(context) {
 
   if (cordovaAbove7) {
     console.log("ENTROU NO CORDOVA 7");
+    var destPath = path.join(context.opts.projectRoot, "platforms", platform, "app");
+    if (utils.checkIfFolderExists(destPath)) {
+      var destFilePath = path.join(destPath, fileName);
+      if(!utils.checkIfFolderExists(destPath)){
+        utils.copyFromSourceToDestPath(defer, sourceFilePath, destFilePath);
+      }
+    }
+    /*
     if (utils.checkIfFolderExists(completeFilePath)) {
       var destFilePath = path.join(completeFilePath, fileName);
       console.log("DEST FILE PATH 2: " + destFilePath);
@@ -89,6 +97,7 @@ module.exports = function(context) {
         console.log("PASSOU O COPY");
       }
     }
+    */
   }
       
   return defer.promise;
