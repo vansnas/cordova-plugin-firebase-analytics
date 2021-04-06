@@ -75,17 +75,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <meta-data android:name="google_analytics_automatic_screen_reporting_enabled" android:value="$AUTOMATIC_SCREEN_REPORTING_ENABLED" />
         </config-file>
 
-        <config-file target="config.xml" parent="/*">
-            <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-            <preference name="GradlePluginGoogleServicesVersion" value="4.3.+" />
-        </config-file>
-
         <dependency id="cordova-support-android-plugin" version="~1.0.0"/>
 
          <resource-file src="google-services.json" target="./google-services.json" />
 
         <framework src="com.google.firebase:firebase-analytics:$ANDROID_FIREBASE_ANALYTICS_VERSION" />
-        <!--<framework src="build.gradle" custom="true" type="gradleReference" />-->
+        <framework src="build.gradle" custom="true" type="gradleReference" />
 
         <source-file src="src/android/FirebaseAnalyticsPlugin.java"
             target-dir="src/by/chemerisuk/cordova/firebase/" />
