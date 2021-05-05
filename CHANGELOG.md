@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-05-05
+- Fix: Fixed plugin pipeline information in configurations.json (https://outsystemsrd.atlassian.net/browse/RMET-720)
+
 ## 2021-04-08
 - Fix: Fixed Android MABS builds for Firebase Analytics being used with OneSignal (https://outsystemsrd.atlassian.net/browse/RMET-580)
 
