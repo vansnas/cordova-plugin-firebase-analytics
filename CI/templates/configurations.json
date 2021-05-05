@@ -5,7 +5,7 @@
         "FirebaseSampleApp"
     ],
     "testPipelineArgs": {
-        "plugin": "firebase-analytics",
+        "plugin": "firebase",
         "threads": "2",
         "tags": "@FirebaseAnalytics"
     },
