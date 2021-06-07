@@ -23,8 +23,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <preference name="ANALYTICS_COLLECTION_ENABLED" default="true" />
     <preference name="AUTOMATIC_SCREEN_REPORTING_ENABLED" default="true" />
 
-    <hook type="before_plugin_install" src="hooks/configurations/installDependencies.js" />
-    <hook type="before_plugin_install" src="hooks/configurations/unzipAndCopyConfigurations.js" />
+    <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git"/>
 
     <platform name="ios">
         <preference name="IOS_FIREBASE_ANALYTICS_VERSION" default="~> 7.0.0"/>
@@ -46,8 +45,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <config-file target="*-Info.plist" parent="FirebaseAutomaticScreenReportingEnabled">
             <string>$AUTOMATIC_SCREEN_REPORTING_ENABLED</string>
         </config-file>
-
-        <resource-file src="GoogleService-Info.plist" target="./GoogleService-Info.plist" />
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />
@@ -76,8 +73,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </config-file>
 
         <dependency id="cordova-support-android-plugin" version="~1.0.0"/>
-
-         <resource-file src="google-services.json" target="./google-services.json" />
 
         <framework src="com.google.firebase:firebase-analytics:$ANDROID_FIREBASE_ANALYTICS_VERSION" />
         <framework src="build.gradle" custom="true" type="gradleReference" />
