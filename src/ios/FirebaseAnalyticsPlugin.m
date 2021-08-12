@@ -78,4 +78,22 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+
+typedef void (^ showPermissionInformationPopupHandler)(UIAlertAction*);
+- (void)showPermissionInformationPopup:(showPermissionInformationPopupHandler)confirmationHandler {
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Title"
+                                message:@"text mssg"
+                                preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"Ok"
+                               style:UIAlertActionStyleDefault
+                               handler:confirmationHandler];
+    
+    [alert addAction:okAction];
+    [self.viewController presentViewController:alert animated:YES completion:nil];
+}
+
 @end
