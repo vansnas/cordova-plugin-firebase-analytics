@@ -78,40 +78,46 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
-- (void)requestTrackingAuthorization {
+- (void)requestTrackingAuthorization:(CDVInvokedUrlCommand *)command {
     
     if (@available(iOS 14, *)) {
-        
-        if(ATTrackingManager.trackingAuthorizationStatus == ATTrackingManagerAuthorizationStatusNotDetermined) {
-            
-            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                switch(status) {
-                    case ATTrackingManagerAuthorizationStatusAuthorized:
-                        break;
-                        
-                    default:
-                        break;
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            BOOL result = false;
+            switch(status) {
+                case ATTrackingManagerAuthorizationStatusAuthorized: {
+                    result = true;
+                    break;
                 }
-            }];
-            
-        }
-        
+                default: {
+                    result = false;
+                    break;
+                }
+            }
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }];
     }
     else {
-        // Fallback on earlier versions
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 }
 
 typedef void (^showPermissionInformationPopupHandler)(UIAlertAction*);
-- (void)showPermissionInformationPopup:(showPermissionInformationPopupHandler)confirmationHandler {
+- (void)showPermissionInformationPopup:
+(NSString *)title :
+(NSString *)message :
+(NSString *)actionText :
+(showPermissionInformationPopupHandler)confirmationHandler
+{
     
     UIAlertController *alert = [UIAlertController
-                                alertControllerWithTitle:@"Title"
-                                message:@"text mssg"
+                                alertControllerWithTitle:title
+                                message:message
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:@"Ok"
+                               actionWithTitle:actionText
                                style:UIAlertActionStyleDefault
                                handler:confirmationHandler];
     
