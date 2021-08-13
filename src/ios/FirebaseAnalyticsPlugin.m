@@ -1,7 +1,7 @@
 #import "FirebaseAnalyticsPlugin.h"
 
 @import Firebase;
-
+@import AppTrackingTransparency;
 
 @implementation FirebaseAnalyticsPlugin
 
@@ -78,8 +78,31 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
+- (void)requestTrackingAuthorization {
+    
+    if (@available(iOS 14, *)) {
+        
+        if(ATTrackingManager.trackingAuthorizationStatus == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                switch(status) {
+                    case ATTrackingManagerAuthorizationStatusAuthorized:
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }];
+            
+        }
+        
+    }
+    else {
+        // Fallback on earlier versions
+    }
+}
 
-typedef void (^ showPermissionInformationPopupHandler)(UIAlertAction*);
+typedef void (^showPermissionInformationPopupHandler)(UIAlertAction*);
 - (void)showPermissionInformationPopup:(showPermissionInformationPopupHandler)confirmationHandler {
     
     UIAlertController *alert = [UIAlertController
@@ -95,5 +118,7 @@ typedef void (^ showPermissionInformationPopupHandler)(UIAlertAction*);
     [alert addAction:okAction];
     [self.viewController presentViewController:alert animated:YES completion:nil];
 }
+
+
 
 @end
