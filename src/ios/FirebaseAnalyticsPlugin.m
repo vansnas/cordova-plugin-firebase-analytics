@@ -80,6 +80,26 @@
 
 - (void)requestTrackingAuthorization:(CDVInvokedUrlCommand *)command {
     
+    bool showInformation = [[command.arguments objectAtIndex:0] boolValue];
+
+    if(showInformation) {
+        
+        NSString* title = [command.arguments objectAtIndex:1];
+        NSString* message = [command.arguments objectAtIndex:2];
+        NSString* buttonTitle = [command.arguments objectAtIndex:3];
+        
+        [self showPermissionInformationPopup:title :message :buttonTitle :^(UIAlertAction *action ) {
+            [self showTrackingAuthorizationPopup:command];
+        }];
+        
+    }
+    else {
+        [self showTrackingAuthorizationPopup:command];
+    }
+}
+
+- (void)showTrackingAuthorizationPopup:(CDVInvokedUrlCommand *)command {
+    
     if (@available(iOS 14, *)) {
         [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
             BOOL result = false;
@@ -107,7 +127,7 @@ typedef void (^showPermissionInformationPopupHandler)(UIAlertAction*);
 - (void)showPermissionInformationPopup:
 (NSString *)title :
 (NSString *)message :
-(NSString *)actionText :
+(NSString *)buttonTitle :
 (showPermissionInformationPopupHandler)confirmationHandler
 {
     
@@ -117,7 +137,7 @@ typedef void (^showPermissionInformationPopupHandler)(UIAlertAction*);
                                 preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:actionText
+                               actionWithTitle:buttonTitle
                                style:UIAlertActionStyleDefault
                                handler:confirmationHandler];
     
