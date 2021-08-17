@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 2021-08-16
+- Added App Tracking Transparency popups (https://outsystemsrd.atlassian.net/browse/RMET-732)
+
 ## 2021-07-22
 - Added Firebase Core Dependency to install config files (https://outsystemsrd.atlassian.net/browse/RMET-695)
 
