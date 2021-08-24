@@ -66,7 +66,6 @@ module.exports = {
                 }
             }
 
-
             exec(resolve, reject, PLUGIN_NAME, "requestTrackingAuthorization", [showInformation, title, message, buttonTitle]);
         });
     }
