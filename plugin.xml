@@ -26,7 +26,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <dependency id="cordova-outsystems-firebase-core" url="https://github.com/OutSystems/cordova-outsystems-firebase-core.git#1.0.0"/>
 
     <platform name="ios">
-        <preference name="IOS_FIREBASE_ANALYTICS_VERSION" default="~> 7.0.0"/>
+        <preference name="IOS_FIREBASE_ANALYTICS_VERSION" default="~> 8.6.0"/>
 
         <config-file target="config.xml" parent="/*">
             <feature name="FirebaseAnalytics">
@@ -46,11 +46,19 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <string>$AUTOMATIC_SCREEN_REPORTING_ENABLED</string>
         </config-file>
         <config-file target="*-Info.plist" parent="NSUserTrackingUsageDescription">
-            <string>$(PRODUCT_NAME) wants to access your information</string>
+            <string>$(PRODUCT_NAME) needs your attention.</string>
         </config-file>
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
         <source-file src="src/ios/FirebaseAnalyticsPlugin.m" />
+
+        <!--
+        <podspec>
+            <pods >
+                <pod name="Firebase/Analytics" spec="~> 7.0.0"/>
+            </pods>
+        </podspec>
+        -->
 
         <framework src="Firebase/Analytics" type="podspec" spec="~> 8.6.0"/>
 
