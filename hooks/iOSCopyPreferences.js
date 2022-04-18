@@ -18,11 +18,12 @@ module.exports = function (context) {
     var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
     var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
     var etreeInfoPlist = et.parse(infoPlistFile);
-    var infoPlistTags = etreeInfoPlist.findall('./dict/array/string');
+    var infoPlistTags = etreeInfoPlist.findall('./dict/string');
 
     for (var i = 0; i < infoPlistTags.length; i++) {
         if (infoPlistTags[i].text.includes("user_tracking_description_ios")) {
-            infoPlistTags[i].text = infoPlistTags[i].text.replace('user_tracking_description_ios', userTrackingDescription)
+            alert("entrou");
+            infoPlistTags[i].text = infoPlistTags[i].text.replace('user_tracking_description_ios', userTrackingDescription);
         }
     }
 
