@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 2021-04-18
+- Added hook to enable the usage of a dynamic message for the NSUserTrackingUsageDescription field for iOS (https://outsystemsrd.atlassian.net/browse/RMET-1496)
+
 ## 5.0.0-OS2
 ### 2021-11-05
 - New plugin release to include metadata tag in Extensibility Configurations in the OS wrapper
