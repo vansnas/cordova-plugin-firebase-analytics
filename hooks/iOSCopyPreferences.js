@@ -19,15 +19,15 @@ module.exports = function (context) {
         var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
         var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
         var etreeInfoPlist = et.parse(infoPlistFile);
-        var infoPlistTags = etreeInfoPlist.findall('./dict/key[text()="NSUserTrackingUsageDescription"]/following-sibling::string');
+        //var infoPlistTags = etreeInfoPlist.findall('./dict/key[text()="NSUserTrackingUsageDescription"]/following-sibling::string');
 
-        console.log("passou o xPath");
+        var infoPlistTags = etreeInfoPlist.findall('./dict/string');
 
         for (var i = 0; i < infoPlistTags.length; i++) {
             console.log("entrou no for");
-            if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
+            if (infoPlistTags[i].text.includes("os_user_tracking_descrption_placeholder")) {
                 console.log("entrou no if");
-                infoPlistTags[i].text = infoPlistTags[i].text.replace('$(PRODUCT_NAME) needs your attention.', userTrackingDescription);
+                infoPlistTags[i].text = infoPlistTags[i].text.replace('os_user_tracking_descrption_placeholder', userTrackingDescription);
             }
         }
 
