@@ -10,6 +10,10 @@ module.exports = function (context) {
     var configParser = new ConfigParser(configXML);
     var userTrackingDescription = configParser.getGlobalPreference("USER_TRACKING_DESCRIPTION_IOS");
 
+    var appNamePath = path.join(projectRoot, 'config.xml');
+    var appNameParser = new ConfigParser(appNamePath);
+    var appName = appNameParser.name();
+
     //Change info.plist
     var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
     var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
