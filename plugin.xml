@@ -29,6 +29,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="ios">
         <preference name="IOS_FIREBASE_ANALYTICS_VERSION" default="~> 8.6.0"/>
 
+        <hook type="after_prepare" src="hooks/iOSCopyPreferences.js" />
+
         <config-file target="config.xml" parent="/*">
             <feature name="FirebaseAnalytics">
                 <param name="ios-package" value="FirebaseAnalyticsPlugin" />
@@ -47,7 +49,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <string>$AUTOMATIC_SCREEN_REPORTING_ENABLED</string>
         </config-file>
         <config-file target="*-Info.plist" parent="NSUserTrackingUsageDescription">
-            <string>$USER_TRACKING_DESCRIPTION_IOS</string>
+            <string>user_tracking_description_ios</string>
         </config-file>
 
         <header-file src="src/ios/FirebaseAnalyticsPlugin.h" />
