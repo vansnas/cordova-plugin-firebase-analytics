@@ -1,7 +1,7 @@
 const et = require('elementtree');
 const path = require('path');
 const fs = require('fs');
-const plist =require('plist');
+const plist = require('plist');
 const { ConfigParser } = require('cordova-common');
 const { Console } = require('console');
 
@@ -12,6 +12,7 @@ module.exports = function (context) {
     var userTrackingDescription = configParser.getGlobalPreference("USER_TRACKING_DESCRIPTION_IOS");
 
     if(userTrackingDescription != ""){
+        /*
         var appNamePath = path.join(projectRoot, 'config.xml');
         var appNameParser = new ConfigParser(appNamePath);
         var appName = appNameParser.name();
@@ -34,5 +35,19 @@ module.exports = function (context) {
 
         var resultXmlInfoPlist = etreeInfoPlist.write();
         fs.writeFileSync(infoPlistPath, resultXmlInfoPlist);
+        */
+
+        var appNamePath = path.join(projectRoot, 'config.xml');
+        var appNameParser = new ConfigParser(appNamePath);
+        var appName = appNameParser.name();
+
+        var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
+
+
+        var obj = plist.parse(fs.readFileSync(infoPlistPath, 'utf8'));
+        obj['NSUserTrackingUsageDescription'] = 'hello'
+        console.log(JSON.stringify(obj));
+        fs.writeFileSync(infoPlistPath, plist.build(obj));
+        
     }
 };
