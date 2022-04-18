@@ -22,7 +22,7 @@ module.exports = function (context) {
 
     for (var i = 0; i < infoPlistTags.length; i++) {
         if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
-            infoPlistTags[i].text = infoPlistTags[i].text.replace('user_tracking_description_ios', userTrackingDescription);
+            infoPlistTags[i].text = infoPlistTags[i].text.replace('$(PRODUCT_NAME) needs your attention.', userTrackingDescription);
         }
     }
 
