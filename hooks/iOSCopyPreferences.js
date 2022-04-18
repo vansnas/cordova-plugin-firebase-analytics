@@ -19,7 +19,9 @@ module.exports = function (context) {
         var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
         var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
         var etreeInfoPlist = et.parse(infoPlistFile);
-        var infoPlistTags = etreeInfoPlist.findall('./dict/key[. = "NSUserTrackingUsageDescription"]/following-sibling::string');
+        var infoPlistTags = etreeInfoPlist.findall('./dict/key[text()="NSUserTrackingUsageDescription"]/following-sibling::string');
+
+        console.log("passou o xPath");
 
         for (var i = 0; i < infoPlistTags.length; i++) {
             console.log("entrou no for");
