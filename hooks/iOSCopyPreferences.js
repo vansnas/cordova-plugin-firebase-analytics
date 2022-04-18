@@ -19,14 +19,16 @@ module.exports = function (context) {
         var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
         var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
         var etreeInfoPlist = et.parse(infoPlistFile);
-        var infoPlistTags = etreeInfoPlist.findall('./dict/string');
+        var infoPlistTags = etreeInfoPlist.findall('./dict/key[. = "NSUserTrackingUsageDescription"]/following-sibling::string');
 
         for (var i = 0; i < infoPlistTags.length; i++) {
+            console.log("entrou no for");
             if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
+                console.log("entrou no if");
                 infoPlistTags[i].text = infoPlistTags[i].text.replace('$(PRODUCT_NAME) needs your attention.', userTrackingDescription);
             }
         }
-        
+
         var resultXmlInfoPlist = etreeInfoPlist.write();
         fs.writeFileSync(infoPlistPath, resultXmlInfoPlist);
     }
