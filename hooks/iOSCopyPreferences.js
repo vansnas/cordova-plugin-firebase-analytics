@@ -10,23 +10,24 @@ module.exports = function (context) {
     var configParser = new ConfigParser(configXML);
     var userTrackingDescription = configParser.getGlobalPreference("USER_TRACKING_DESCRIPTION_IOS");
 
-    var appNamePath = path.join(projectRoot, 'config.xml');
-    var appNameParser = new ConfigParser(appNamePath);
-    var appName = appNameParser.name();
+    if(userTrackingDescription != ""){
+        var appNamePath = path.join(projectRoot, 'config.xml');
+        var appNameParser = new ConfigParser(appNamePath);
+        var appName = appNameParser.name();
 
-    //Change info.plist
-    var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
-    var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
-    var etreeInfoPlist = et.parse(infoPlistFile);
-    var infoPlistTags = etreeInfoPlist.findall('./dict/string');
+        //Change info.plist
+        var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
+        var infoPlistFile = fs.readFileSync(infoPlistPath).toString();
+        var etreeInfoPlist = et.parse(infoPlistFile);
+        var infoPlistTags = etreeInfoPlist.findall('./dict/string');
 
-    for (var i = 0; i < infoPlistTags.length; i++) {
-        if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
-            infoPlistTags[i].text = infoPlistTags[i].text.replace('$(PRODUCT_NAME) needs your attention.', userTrackingDescription);
+        for (var i = 0; i < infoPlistTags.length; i++) {
+            if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
+                infoPlistTags[i].text = infoPlistTags[i].text.replace('$(PRODUCT_NAME) needs your attention.', userTrackingDescription);
+            }
         }
+        
+        var resultXmlInfoPlist = etreeInfoPlist.write();
+        fs.writeFileSync(infoPlistPath, resultXmlInfoPlist);
     }
-
-    var resultXmlInfoPlist = etreeInfoPlist.write();
-    fs.writeFileSync(infoPlistPath, resultXmlInfoPlist);
-
 };
