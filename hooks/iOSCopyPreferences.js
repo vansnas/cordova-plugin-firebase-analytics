@@ -21,7 +21,7 @@ module.exports = function (context) {
     var infoPlistTags = etreeInfoPlist.findall('./dict/string');
 
     for (var i = 0; i < infoPlistTags.length; i++) {
-        if (infoPlistTags[i].text.includes("user_tracking_description_ios")) {
+        if (infoPlistTags[i].text.includes("$(PRODUCT_NAME) needs your attention.")) {
             alert("entrou");
             infoPlistTags[i].text = infoPlistTags[i].text.replace('user_tracking_description_ios', userTrackingDescription);
         }
