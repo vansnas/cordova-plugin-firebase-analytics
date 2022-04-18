@@ -1,6 +1,7 @@
 const et = require('elementtree');
 const path = require('path');
 const fs = require('fs');
+const plist =require('plist');
 const { ConfigParser } = require('cordova-common');
 const { Console } = require('console');
 
