@@ -8,7 +8,7 @@ module.exports = function (context) {
     var projectRoot = context.opts.cordova.project ? context.opts.cordova.project.root : context.opts.projectRoot;
     var configXML = path.join(projectRoot, 'config.xml');
     var configParser = new ConfigParser(configXML);
-    var enableAppTracking = configParser.getGlobalPreference("EnableAppTrackingTransparencyPrompt");
+    var enableAppTracking = configParser.getPlatformPreference("EnableAppTrackingTransparencyPrompt", "ios");
 
     var appNamePath = path.join(projectRoot, 'config.xml');
     var appNameParser = new ConfigParser(appNamePath);
@@ -18,7 +18,7 @@ module.exports = function (context) {
 
     if(enableAppTracking == true){
         if(userTrackingDescription != ""){
-            var userTrackingDescription = configParser.getGlobalPreference("USER_TRACKING_DESCRIPTION_IOS");
+            var userTrackingDescription = configParser.getPlatformPreference("USER_TRACKING_DESCRIPTION_IOS", "ios");
             obj['NSUserTrackingUsageDescription'] = userTrackingDescription;
         }
     }
