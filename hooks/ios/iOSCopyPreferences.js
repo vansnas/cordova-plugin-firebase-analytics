@@ -23,7 +23,10 @@ module.exports = function (context) {
         }
     }
     else{
-        obj['NSUserTrackingUsageDescription'] = null;
+        var index = obj.indexOf('NSUserTrackingUsageDescription');
+        if (index !== -1) {
+            obj.splice(index, 1);
+        }
     }
     fs.writeFileSync(infoPlistPath, plist.build(obj));
 };
