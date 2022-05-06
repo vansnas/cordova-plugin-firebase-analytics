@@ -28,6 +28,8 @@ module.exports = function (context) {
         //    obj.splice(index, 1);
         //}
         console.log(obj);
+        delete obj['NSUserTrackingUsageDescription'];
+        console.log(obj);
     }
     fs.writeFileSync(infoPlistPath, plist.build(obj));
 };
