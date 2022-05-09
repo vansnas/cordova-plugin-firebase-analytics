@@ -122,7 +122,7 @@
             }];
         }
         else{
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"App Tracking Transparency prompt not enabled."];
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
     }
