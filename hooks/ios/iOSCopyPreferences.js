@@ -9,9 +9,7 @@ module.exports = function (context) {
     var configXML = path.join(projectRoot, 'config.xml');
     var configParser = new ConfigParser(configXML);
     var enableAppTracking = configParser.getPlatformPreference("EnableAppTrackingTransparencyPrompt", "ios");
-
-    console.log("ENABLE_TRACKING" + enableAppTracking);
-
+    
     var appNamePath = path.join(projectRoot, 'config.xml');
     var appNameParser = new ConfigParser(appNamePath);
     var appName = appNameParser.name();
