@@ -16,14 +16,14 @@ module.exports = function (context) {
     var infoPlistPath = path.join(projectRoot, 'platforms/ios/' + appName + '/'+ appName +'-info.plist');
     var obj = plist.parse(fs.readFileSync(infoPlistPath, 'utf8'));
 
-    if(enableAppTracking == "true"){
+    if(enableAppTracking == "true" || enableAppTracking == ""){
         if(userTrackingDescription != ""){
             var userTrackingDescription = configParser.getPlatformPreference("USER_TRACKING_DESCRIPTION_IOS", "ios");
             obj['NSUserTrackingUsageDescription'] = userTrackingDescription;
             fs.writeFileSync(infoPlistPath, plist.build(obj));
         }
     }
-    else{
+    else if(enableAppTracking == "false"){
         delete obj['NSUserTrackingUsageDescription'];
         fs.writeFileSync(infoPlistPath, plist.build(obj));
     }
