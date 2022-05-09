@@ -17,8 +17,8 @@ module.exports = function (context) {
     var obj = plist.parse(fs.readFileSync(infoPlistPath, 'utf8'));
 
     if(enableAppTracking == "true" || enableAppTracking == ""){
+        var userTrackingDescription = configParser.getPlatformPreference("USER_TRACKING_DESCRIPTION_IOS", "ios");
         if(userTrackingDescription != ""){
-            var userTrackingDescription = configParser.getPlatformPreference("USER_TRACKING_DESCRIPTION_IOS", "ios");
             obj['NSUserTrackingUsageDescription'] = userTrackingDescription;
             fs.writeFileSync(infoPlistPath, plist.build(obj));
         }
