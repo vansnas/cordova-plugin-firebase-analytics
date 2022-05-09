@@ -106,17 +106,8 @@
         
         if([dict objectForKey:@"NSUserTrackingUsageDescription"]){
             [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-                BOOL result = false;
-                switch(status) {
-                    case ATTrackingManagerAuthorizationStatusAuthorized: {
-                        result = true;
-                        break;
-                    }
-                    default: {
-                        result = false;
-                        break;
-                    }
-                }
+                BOOL result = status == ATTrackingManagerAuthorizationStatusAuthorized;
+                
                 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             }];
