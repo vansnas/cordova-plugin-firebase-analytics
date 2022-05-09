@@ -101,21 +101,30 @@
 - (void)showTrackingAuthorizationPopup:(CDVInvokedUrlCommand *)command {
     
     if (@available(iOS 14, *)) {
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            BOOL result = false;
-            switch(status) {
-                case ATTrackingManagerAuthorizationStatusAuthorized: {
-                    result = true;
-                    break;
+        
+        NSDictionary *dict = NSBundle.mainBundle.infoDictionary;
+        
+        if([dict objectForKey:@"NSUserTrackingUsageDescription"]){
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                BOOL result = false;
+                switch(status) {
+                    case ATTrackingManagerAuthorizationStatusAuthorized: {
+                        result = true;
+                        break;
+                    }
+                    default: {
+                        result = false;
+                        break;
+                    }
                 }
-                default: {
-                    result = false;
-                    break;
-                }
-            }
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
+                CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }];
+        }
+        else{
+            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"App Tracking Transparency prompt not enabled."];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-        }];
+        }
     }
     else {
         CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
