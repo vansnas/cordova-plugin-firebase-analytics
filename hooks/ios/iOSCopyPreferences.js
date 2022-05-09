@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const plist = require('plist');
 const { ConfigParser } = require('cordova-common');
-const { config } = require('process');
 
 module.exports = function (context) {
     var projectRoot = context.opts.cordova.project ? context.opts.cordova.project.root : context.opts.projectRoot;
