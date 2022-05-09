@@ -9,7 +9,7 @@ module.exports = function (context) {
     var configXML = path.join(projectRoot, 'config.xml');
     var configParser = new ConfigParser(configXML);
     var enableAppTracking = configParser.getPlatformPreference("EnableAppTrackingTransparencyPrompt", "ios");
-    
+
     var appNamePath = path.join(projectRoot, 'config.xml');
     var appNameParser = new ConfigParser(appNamePath);
     var appName = appNameParser.name();
@@ -20,10 +20,11 @@ module.exports = function (context) {
         if(userTrackingDescription != ""){
             var userTrackingDescription = configParser.getPlatformPreference("USER_TRACKING_DESCRIPTION_IOS", "ios");
             obj['NSUserTrackingUsageDescription'] = userTrackingDescription;
+            fs.writeFileSync(infoPlistPath, plist.build(obj));
         }
     }
     else{
         delete obj['NSUserTrackingUsageDescription'];
+        fs.writeFileSync(infoPlistPath, plist.build(obj));
     }
-    fs.writeFileSync(infoPlistPath, plist.build(obj));
 };
