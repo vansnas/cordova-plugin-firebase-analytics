@@ -23,13 +23,7 @@ module.exports = function (context) {
         }
     }
     else{
-        //var index = obj.indexOf('NSUserTrackingUsageDescription');
-        //if (index !== -1) {
-        //    obj.splice(index, 1);
-        //}
-        console.log(obj);
         delete obj['NSUserTrackingUsageDescription'];
-        console.log(obj);
     }
     fs.writeFileSync(infoPlistPath, plist.build(obj));
 };
