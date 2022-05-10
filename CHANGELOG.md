@@ -8,6 +8,7 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 5.0.0-OS4
 ### 2021-05-09
 - Made NSUserTrackingUsageDescription optional in .plist file (https://outsystemsrd.atlassian.net/browse/RMET-1547)
 
