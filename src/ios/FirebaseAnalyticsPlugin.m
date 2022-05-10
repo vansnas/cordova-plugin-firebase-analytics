@@ -111,16 +111,12 @@
                 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:result];
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             }];
-        }
-        else{
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
-            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            return;
         }
     }
-    else {
-        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }
+    
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 typedef void (^showPermissionInformationPopupHandler)(UIAlertAction*);
