@@ -8,6 +8,9 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+### 2021-05-09
+- Made NSUserTrackingUsageDescription optional in .plist file (https://outsystemsrd.atlassian.net/browse/RMET-1547)
+
 ### 2021-05-06
 - Fixed default value for NSUserTrackingUsageDescription in plugin.xml (https://outsystemsrd.atlassian.net/browse/RMET-1547)
 
