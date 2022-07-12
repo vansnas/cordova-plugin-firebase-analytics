@@ -8,6 +8,7 @@ The changes documented here do not include those from the original repository.
 
 ## [Unreleased]
 
+## 5.0.0-OS6
 ### 2021-07-12
 - Removed unused parameters from RequestTrackingAuthorization (https://outsystemsrd.atlassian.net/browse/RMET-1715)
 
