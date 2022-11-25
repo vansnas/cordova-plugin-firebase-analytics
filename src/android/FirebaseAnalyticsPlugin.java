@@ -73,6 +73,16 @@ public class FirebaseAnalyticsPlugin extends ReflectiveCordovaPlugin {
 
         callbackContext.success();
     }
+    
+     @CordovaMethod
+    private void setSelectContent(String contentType, String ItemId, CallbackContext callbackContext) {
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, contentType);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, ItemId);
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        callbackContext.success();
+    }
 
     @CordovaMethod
     private void setDefaultEventParameters(JSONObject params, CallbackContext callbackContext) throws JSONException {
